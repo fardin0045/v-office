@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+data/
+*.log
+.DS_Store
+docs/
+documentation/
+server/data/db/
+*.wt
+diagnostic.data/
+journal/
+PROJECT_DOCUMENTATION.md
