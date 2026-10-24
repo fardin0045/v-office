@@ -1,0 +1,23 @@
+{
+  "name": "v-office",
+  "version": "1.0.0",
+  "description": "V-Office - 3D Hybrid Office Management System",
+  "private": true,
+  "scripts": {
+    "install:all": "node scripts/installAll.js",
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"cyan,magenta\" \"node server/src/server.js\" \"npm --prefix client run dev\"",
+    "dev:server": "node server/src/server.js",
+    "dev:client": "npm --prefix client run dev",
+    "seed": "node server/src/seed/seedData.js",
+    "build": "npm --prefix client run build",
+    "start": "node server/src/server.js",
+    "lint": "npx -y oxlint@1 -c client/.oxlintrc.json client/src",
+    "test": "npm --prefix server test"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.4"
+  },
+  "engines": {
+    "node": ">=18.18"
+  }
+}

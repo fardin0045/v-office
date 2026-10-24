@@ -1,0 +1,280 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Theme tokens (space-separated RGB so Tailwind opacity modifiers work).
+ * Day = Tailwind's defaults + the #53ece9 brand scale. Night keeps the same meaning for every shade:
+ * low numbers are quiet surfaces/tints, high numbers are strong text, so existing classes need no changes.
+ */
+@layer base {
+  :root {
+    color-scheme: light;
+    --white: 255 255 255;
+    --canvas: 246 250 250;
+    --ink: 15 23 42;
+    --ink-muted: 71 85 105;
+    --ink-subtle: 100 116 139;
+    --shadow: 15 23 42;
+    --elevated: 255 255 255;
+    --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 1px 3px rgb(15 23 42 / 0.06);
+    --shadow-card-hover: 0 4px 12px rgb(15 23 42 / 0.06), 0 12px 32px -8px rgb(15 23 42 / 0.1);
+    --shadow-pop: 0 12px 40px -8px rgb(15 23 42 / 0.18), 0 4px 12px rgb(15 23 42 / 0.06);
+
+    --slate-50: 248 250 252;
+    --slate-100: 241 245 249;
+    --slate-200: 226 232 240;
+    --slate-300: 203 213 225;
+    --slate-400: 148 163 184;
+    --slate-500: 100 116 139;
+    --slate-600: 71 85 105;
+    --slate-700: 51 65 85;
+    --slate-800: 30 41 59;
+    --slate-900: 15 23 42;
+    --slate-950: 2 6 23;
+
+    --brand-50: 239 254 253;
+    --brand-100: 214 251 250;
+    --brand-200: 176 247 245;
+    --brand-300: 83 236 233;
+    --brand-400: 45 217 214;
+    --brand-500: 20 188 185;
+    --brand-600: 14 152 149;
+    --brand-700: 16 121 119;
+    --brand-800: 19 95 94;
+    --brand-900: 20 79 78;
+    --brand-950: 5 47 47;
+
+    --emerald-50: 236 253 245;
+    --emerald-100: 209 250 229;
+    --emerald-200: 167 243 208;
+    --emerald-300: 110 231 183;
+    --emerald-400: 52 211 153;
+    --emerald-500: 16 185 129;
+    --emerald-600: 5 150 105;
+    --emerald-700: 4 120 87;
+    --emerald-800: 6 95 70;
+    --emerald-900: 6 78 59;
+
+    --rose-50: 255 241 242;
+    --rose-100: 255 228 230;
+    --rose-200: 254 205 211;
+    --rose-300: 253 164 175;
+    --rose-400: 251 113 133;
+    --rose-500: 244 63 94;
+    --rose-600: 225 29 72;
+    --rose-700: 190 18 60;
+    --rose-800: 159 18 57;
+    --rose-900: 136 19 55;
+
+    --amber-50: 255 251 235;
+    --amber-100: 254 243 199;
+    --amber-200: 253 230 138;
+    --amber-300: 252 211 77;
+    --amber-400: 251 191 36;
+    --amber-500: 245 158 11;
+    --amber-600: 217 119 6;
+    --amber-700: 180 83 9;
+    --amber-800: 146 64 14;
+    --amber-900: 120 53 15;
+  }
+
+  /*
+   * Night: a deep neutral with a slight teal tint (it matches the #53ece9 brand) instead of a
+   * cold black. Depth comes from lighter surfaces, not shadows:
+   * canvas (page) < white (cards, 1 step up) < slate-50 (raised rows, table heads) < --elevated (menus, modals).
+   */
+  :root.dark {
+    color-scheme: dark;
+    --white: 18 26 30;
+    --canvas: 10 16 19;
+    --elevated: 22 31 36;
+    --ink: 234 240 242;
+    --ink-muted: 178 190 196;
+    --ink-subtle: 150 164 171;
+    --shadow: 0 0 0;
+    --shadow-card: inset 0 1px 0 rgb(255 255 255 / 0.035), 0 1px 2px rgb(0 0 0 / 0.35);
+    --shadow-card-hover: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 8px 24px -6px rgb(0 0 0 / 0.55);
+    --shadow-pop: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 0 0 1px rgb(255 255 255 / 0.05), 0 20px 50px -12px rgb(0 0 0 / 0.75);
+
+    --slate-50: 27 38 44;
+    --slate-100: 33 46 52;
+    --slate-200: 44 59 66;
+    --slate-300: 62 79 87;
+    --slate-400: 136 152 160;
+    --slate-500: 150 164 171;
+    --slate-600: 178 190 196;
+    --slate-700: 204 213 218;
+    --slate-800: 226 232 235;
+    --slate-900: 238 242 244;
+    --slate-950: 248 250 251;
+
+    --brand-50: 13 44 47;
+    --brand-100: 15 58 61;
+    --brand-200: 20 88 90;
+    --brand-500: 45 217 214;
+    --brand-600: 83 236 233;
+    --brand-700: 110 240 237;
+    --brand-800: 150 245 243;
+    --brand-900: 190 249 248;
+    --brand-950: 224 253 252;
+
+    --emerald-50: 8 40 32;
+    --emerald-100: 10 54 42;
+    --emerald-200: 14 88 65;
+    --emerald-300: 22 128 95;
+    --emerald-600: 45 200 143;
+    --emerald-700: 52 211 153;
+    --emerald-800: 110 231 183;
+    --emerald-900: 167 243 208;
+
+    --rose-50: 50 17 25;
+    --rose-100: 68 20 32;
+    --rose-200: 108 30 49;
+    --rose-300: 158 44 70;
+    --rose-600: 251 100 125;
+    --rose-700: 251 113 133;
+    --rose-800: 253 164 175;
+    --rose-900: 254 205 211;
+
+    --amber-50: 44 31 8;
+    --amber-100: 64 44 10;
+    --amber-200: 106 72 14;
+    --amber-300: 156 108 20;
+    --amber-600: 245 158 11;
+    --amber-700: 251 191 36;
+    --amber-800: 252 211 77;
+    --amber-900: 253 230 138;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    background-color: rgb(var(--canvas));
+    color: rgb(var(--ink));
+    transition: background-color 0.2s ease, color 0.2s ease;
+    min-height: 100vh;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  ::selection {
+    background-color: rgb(var(--brand-200));
+    color: rgb(var(--brand-950));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--brand-500));
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .input {
+    @apply block w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm
+      placeholder:text-slate-400 transition-colors
+      hover:border-slate-400
+      focus:outline-none
+      disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-500;
+  }
+
+  .input:focus {
+    border-color: rgb(var(--brand-500));
+    box-shadow: 0 0 0 3px rgb(var(--brand-200));
+  }
+
+  .input[aria-invalid='true'] {
+    border-color: rgb(var(--rose-400));
+  }
+
+  .input[aria-invalid='true']:focus {
+    border-color: rgb(var(--rose-500));
+    box-shadow: 0 0 0 3px rgb(var(--rose-100));
+  }
+
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-slate-700;
+  }
+
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white;
+    box-shadow: var(--shadow-card);
+  }
+
+  .table-head {
+    @apply bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.14em];
+    color: rgb(var(--brand-700));
+  }
+}
+
+/* Light, unobtrusive scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--slate-300)) transparent;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--slate-300));
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--slate-400));
+  background-clip: content-box;
+}
+
+/* Three.js canvas handles its own gestures */
+canvas {
+  touch-action: none;
+}
+
+.working-desk-animation {
+  animation: workingGlow 2s ease-in-out infinite;
+}
+
+/* Status text that needs a different shade per theme (3D labels): set --status-day / --status-night. */
+.status-text {
+  color: var(--status-day);
+}
+.dark .status-text {
+  color: var(--status-night);
+}
+
+@keyframes workingGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.35), 0 6px 16px rgba(16, 185, 129, 0.18);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.6), 0 6px 22px rgba(16, 185, 129, 0.38);
+  }
+}

@@ -1,0 +1,13 @@
+**/node_modules
+**/dist
+**/.env
+**/.env.*
+!**/.env.example
+**/*.log
+server/data
+.git
+.vscode
+.idea
+.DS_Store
+Dockerfile
+.dockerignore
