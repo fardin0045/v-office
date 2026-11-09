@@ -67,7 +67,13 @@ export const workAPI = {
 };
 
 export const chatAPI = {
-  getMessages: (before) => api.get('/chat/messages', { params: before ? { before } : {} }),
+  getMessages: (before, kind = 'message') =>
+  api.get('/chat/messages', {
+    params: {
+      kind,
+      ...(before ? { before } : {}),
+    },
+  }),
   getUnread: () => api.get('/chat/unread'),
   send: (data) => api.post('/chat/messages', data),
   remove: (id) => api.delete(`/chat/messages/${id}`),
